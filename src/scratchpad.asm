@@ -33,5 +33,29 @@ mov ah, 0x0e ; BIOS Functions (tty mode)
 int 0x10
 
 
+; math operations
+; add, sub, mul, div
+; add dest, src -> dest = dest + src
+; sub dest, src -> dest = dest - src
+; mul dest, src -> dest = dest * src
+; div dest, src -> dest = dest / src
+mov ax, 0x01 ; move the value 1 in to the ax register
+mov bx, 0x02 ; move the value 2 in to the bx register
+add, bx, ax ; ==> bx = bx + ax ==> store the result of 2 + 1 in to the bx register
+; ax => 1, bx => 3
+mov ax, 0x02 ; ax => 2, bx => 3
+mul bx, ax ; bx = bx * ax ==> store the result of 3 * 2 in to the bx register
+; ax => 2, bx => 6
+
+sub bx, ax ; bx = bx - ax ==> store the result of 6 - 2 in to the bx register
+; ax => 2, bx => 4
+
+; data (label: data size value) in high level languages this would be a variable
+my_num: db 00000000b ; HEX: 0x00   DECIMAL: 0
+
+; times 4 db 0 => 00000000b 00000000b 00000000b 00000000b
+
+
+
 
 

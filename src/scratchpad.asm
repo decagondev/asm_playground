@@ -55,6 +55,33 @@ my_num: db 00000000b ; HEX: 0x00   DECIMAL: 0
 
 ; times 4 db 0 => 00000000b 00000000b 00000000b 00000000b
 
+; the stack
+
+; bp base pointer (the base of the stack)
+; sp stack pointer (points to the top of the stack)
+
+mov bp, 0x8000; this is where we want the stack to live
+mov sp, bp; set the top of the stack to the base of the stack
+
+; push, push item on to the top of the stack
+; decrement the sp from 0x8000 to 0x7ffe, insert the data at the address of sp
+; ['A','B','C'<-- top]
+push 'A' ; decrement the sp from 0x8000 to 0x7ffe, insert the data at the address of sp
+push 'B' ; decrement the sp from 0x7ffe to 0x7ffc, insert the data at the address of sp
+push 'C' ; decrement the sp from 0x7ffc to 0x7ffa, insert the data at the address of sp
+; pop, pop item of the top of the stack
+; command destination
+; return the data pointed to by the sp and puts it in to the destination
+; increment the sp
+; ['A','B'<-- top]
+pop cx
+
+; push some data
+; command data
+; push 'A'
+; pointers and de-reference
+mov al, [0x7ffe] ; => 'A' move the deref of the memory 'A' in to the al
+
 
 
 

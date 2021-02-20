@@ -144,3 +144,30 @@ call add_one_to_bx
 ; read char from keyboard (0x00) store the char at al
 ; int 0x16
 
+; [bx] ; 'A'
+
+; more loops and strings
+; put the string address in to a register bx
+mov bx, message
+call print_a_char
+; function
+print_a_string:
+    ; set BIOS Function tty
+    mov ah, 0x0e
+    print_a_char:
+    ; move a char in to al
+    mov al, [bx]
+    ; loop the printing
+    cmp al, 0
+    je end_print
+    ; call int 0x10
+    int 0x10
+
+    add bx, 1
+    jmp print_a_char
+
+
+    end_print:
+        ret
+
+message: db "ABCDE", 0

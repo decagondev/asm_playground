@@ -83,6 +83,56 @@ pop cx
 mov al, [0x7ffe] ; => 'A' move the deref of the memory 'A' in to the al
 
 
+; looping in assembly
+
+; label to jump to
+; something to repeat
+; a jump instruction
+
+; infinite loop
+some_label:
+    jmp some_label
+
+; infinite loop
+jmp $
+
+; comparison cmp
+cmp cx, 0
 
 
+; increment / decrement
+; add, sub
 
+; c = 3
+; while c > 0:
+; c -= 1
+
+; set cx to 3
+mov cx, 3
+
+my_loop:
+    cmp cx, 0 ; is the value at cx zero?
+    je end_of_loop ; if it is then end the loop
+    sub cx, 1 ; decrement the value at cx
+
+    jmp my_loop ; go to the start of the loop
+
+    end_of_loop: ; here is where we end
+
+
+; functions in assembly are similar to loops and variables in that they use a label
+; functions also have a ret keyword to return back to the instruction 
+; after they line they were called from
+add_one_to_bx: ; label of a memory address
+    add bx, 1 ; do some stuff
+    ret ; return from function
+
+; the way to invoke a function is with the call key word
+; call function label
+call add_one_to_bx
+call add_one_to_bx
+
+; conditional jumps
+; je, jne, jz, jnz
+; unconditional jumps
+; jmp

@@ -136,3 +136,11 @@ call add_one_to_bx
 ; je, jne, jz, jnz
 ; unconditional jumps
 ; jmp
+
+; keyboard reading
+; BIOS Functions
+; write a char (0x0e)
+; int 0x10
+; read char from keyboard (0x00) store the char at al
+; int 0x16
+

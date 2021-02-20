@@ -34,8 +34,6 @@ pop cx ; put 2 bytes in to cx
 mov al, cl ; set the low byte in cx to the low byte in ax
 int 0x10 ; print 'A'
 
-
-
 jmp $ ; infinite loop
 
 ; some area for data

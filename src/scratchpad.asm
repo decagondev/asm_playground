@@ -171,3 +171,17 @@ print_a_string:
         ret
 
 message: db "ABCDE", 0
+
+; bitmasking
+
+; to mask out a binary digit we can set a mask of 0 in binary
+; and to include a binary digit we can set a mask of 1 in binary
+  11110101 NUM1
+& 00001111 MASK
+----------
+  00000101 RESULT
+
+; let's mask in hexadecimal
+  0xfea21256 NUM2
+& 0x0000FF00 MASK
+  0x00001200
